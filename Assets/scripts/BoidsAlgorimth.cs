@@ -54,7 +54,7 @@ public class BoidsAlgorimth : MonoBehaviour {
     {
         if (myFish.GetComponent<BoidStat>().velocity.magnitude > limited)
         {
-            myFish.GetComponent<BoidStat>().velocity = myFish.GetComponent<BoidStat>().velocity.normalized * 0.05f;
+            myFish.GetComponent<BoidStat>().velocity = myFish.GetComponent<BoidStat>().velocity.normalized * 0.25f;
         }
     }
 
@@ -68,15 +68,18 @@ public class BoidsAlgorimth : MonoBehaviour {
             v4 = bounding_box(myFish) * 0.01f;
 
             myFish.GetComponent<BoidStat>().velocity = myFish.GetComponent<BoidStat>().velocity + v1 + v2 + v3 + v4;
+            myFish.GetComponent<BoidStat>().transform.up = myFish.GetComponent<BoidStat>().velocity.normalized;
             limited_velocity(myFish);
             myFish.transform.position += myFish.GetComponent<BoidStat>().velocity;
+
         }
 	}
 
+   
     Vector3 bounding_box(GameObject currentFish) // boids wont move too far away
     {
         Vector3 fish_position = currentFish.transform.position;
-
+        
         if (fish_position.x < xmin)      { force.x = xmin - fish_position.x; }
         else if (fish_position.x > xmax) { force.x = xmax - fish_position.x; }
 
@@ -93,7 +96,7 @@ public class BoidsAlgorimth : MonoBehaviour {
     {
         if (target)
         {
-            return (target.transform.position - myFish.transform.position) / 100;
+            return (target.transform.position - myFish.transform.position) / 100; 
         }
 
         else foreach (GameObject f in fishgold)
@@ -114,7 +117,7 @@ public class BoidsAlgorimth : MonoBehaviour {
         {
             if (f != myFish)
             {
-                if (Vector3.Distance(f.transform.position, myFish.transform.position) < 4) 
+                if (Vector3.Distance(f.transform.position, myFish.transform.position) < 6) 
                 { displacement = displacement - (f.transform.position - myFish.transform.position); }
             }
         }

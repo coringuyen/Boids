@@ -17,6 +17,6 @@ public class BoidStat : MonoBehaviour {
     void Start()
     {
         //velocity = new Vector3(0.1f, 0.1f, 0.1f);
-        velocity = new Vector3(Random.Range(8.0f, -8.0f), Random.Range(0.5f, -8.0f), Random.Range(8.0f, -8.0f));
+        velocity = new Vector3(Random.Range(0.2f, -0.2f), Random.Range(0.5f, -0.2f), Random.Range(0.2f, -0.20f));
     }
 }
