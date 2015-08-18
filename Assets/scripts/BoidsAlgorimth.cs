@@ -4,32 +4,33 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class BoidsAlgorimth : MonoBehaviour {
-
+    // list of gameobject
     public List<GameObject> fishgold;
 
-    //public float alignment_insc, seperation_insc = 0;
-    public int count = 0;
-    public GameObject spawnfish;
-    public GameObject target;
-    public Slider cohension_inc;
+    public int count = 0; // how many time fish need to spawn
+    public GameObject spawnfish; // the fish object to spawn
+    public GameObject target; // fish target to go to 
+    public Slider cohension_inc; 
     public Slider alignment_inc;
     public Slider seperation_inc;
+ 
 
-    Vector3 pos;
-    Vector3 v1, v2, v3, v4;
-    Vector3 pcj;
-    Vector3 pvj;
-    Vector3 force;
-    public float limited = 0;
+    Vector3 pos; // give random position when fish spawn
+    Vector3 v1, v2, v3, v4; // assign to the rules
+    Vector3 pcj; // centre of mass
+    Vector3 pvj; // perceive velocity, average all boids velocity except itself
+    Vector3 force; // to return new position for bounding box
+    public float limited = 0; // limited velocity
     //int ground_lvl = -60;
     bool perch;
 
+    
     // limited value for bounding box
     public int xmin, xmax, ymin, ymax, zmin, zmax;
   
     void Start()
     {
-        for (int i = 0; i < count; ++i)
+        for (int i = 0; i < count; ++i) // spawn gameobject then add it to the list
         {
             GameObject fish;
             pos = new Vector3(Random.Range(10.0f, -10.0f), Random.Range(1.5f, 10.0f), Random.Range(10.0f, -10.0f));
@@ -37,25 +38,23 @@ public class BoidsAlgorimth : MonoBehaviour {
             fish.transform.position = pos;
             fishgold.Add(fish);
         }
-        
     }
-
+ 
     void Update()
     {
         move_all_boids_to_new_position();
     }
-
-    //float magnitude(Vector3 vel) // vector size
-    //{
-    //    return Mathf.Sqrt(vel.x * vel.x + vel.y * vel.y + vel.z * vel.z);
-    //}
-
+  
     void limited_velocity(GameObject myFish) // they wont move too fast
     {
         if (myFish.GetComponent<BoidStat>().velocity.magnitude > limited)
         {
             myFish.GetComponent<BoidStat>().velocity = myFish.GetComponent<BoidStat>().velocity.normalized * 0.25f;
         }
+    }
+    public void ExitButton()
+    {
+            Application.Quit();
     }
 
 	void move_all_boids_to_new_position() // move to the position that they should be
@@ -76,7 +75,7 @@ public class BoidsAlgorimth : MonoBehaviour {
 	}
 
    
-    Vector3 bounding_box(GameObject currentFish) // boids wont move too far away
+    Vector3 bounding_box(GameObject currentFish) // a limited distance boids need to be in 
     {
         Vector3 fish_position = currentFish.transform.position;
         
@@ -109,7 +108,7 @@ public class BoidsAlgorimth : MonoBehaviour {
         return (pcj - myFish.transform.position) / 100;
     }
 
-    Vector3 seperation(GameObject myFish) // every boids have their own territory
+    Vector3 seperation(GameObject myFish) // they won't be on top of each other or touch each other
     {
         Vector3 displacement = new Vector3(0,0,0);
 
