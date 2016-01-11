@@ -22,7 +22,7 @@ public class BoidsAlgorimth : MonoBehaviour {
     Vector3 pcj; // centre of mass
     Vector3 pvj; // perceive velocity, average all boids velocity except itself
     Vector3 force; // to return new position for bounding box
-    public float limited = 0; // limited velocity
+    float limitedVelocity; // limited velocity
     //int ground_lvl = -60;
     bool perch;
 
@@ -32,12 +32,14 @@ public class BoidsAlgorimth : MonoBehaviour {
   
     void Start()
     {
+        limitedVelocity = 0.1f;
         for (int i = 0; i < count; ++i) // spawn gameobject then add it to the list
         {
             GameObject fish;
             pos = new Vector3(Random.Range(10.0f, -10.0f), Random.Range(1.5f, 10.0f), Random.Range(10.0f, -10.0f));
             fish = Instantiate(spawnfish) as GameObject;
             fish.transform.position = pos;
+            fish.transform.parent = gameObject.transform;
             fishgold.Add(fish);
         }
 
@@ -54,7 +56,7 @@ public class BoidsAlgorimth : MonoBehaviour {
   
     void limited_velocity(GameObject myFish) // they wont move too fast
     {
-        if (myFish.GetComponent<BoidStat>().velocity.magnitude > limited)
+        if (myFish.GetComponent<BoidStat>().velocity.magnitude > limitedVelocity)
         {
             myFish.GetComponent<BoidStat>().velocity = myFish.GetComponent<BoidStat>().velocity.normalized * 0.25f;
         }
@@ -68,9 +70,9 @@ public class BoidsAlgorimth : MonoBehaviour {
 	{
         foreach(GameObject myFish in fishgold)
         {
-            v1 = cohesion  (myFish) * cohension_inc.value;
-            v2 = seperation(myFish) * seperation_inc.value;
-            v3 = alignment (myFish) * alignment_inc.value;
+            v1 = cohesion  (myFish) * cohension_inc.value * 0.1f;
+            v2 = seperation(myFish) * seperation_inc.value * 0.1f;
+            v3 = alignment (myFish) * alignment_inc.value * 0.1f;
             v4 = bounding_box(myFish) * 0.01f;
 
             myFish.GetComponent<BoidStat>().velocity = myFish.GetComponent<BoidStat>().velocity + v1 + v2 + v3 + v4;
