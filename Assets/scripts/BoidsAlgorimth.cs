@@ -10,6 +10,8 @@ public class BoidsAlgorimth : MonoBehaviour {
     public int count = 0; // how many time fish need to spawn
     public GameObject spawnfish; // the fish object to spawn
     public GameObject target; // fish target to go to 
+    public GameObject bigFish; 
+
     public Slider cohension_inc; 
     public Slider alignment_inc;
     public Slider seperation_inc;
@@ -38,11 +40,16 @@ public class BoidsAlgorimth : MonoBehaviour {
             fish.transform.position = pos;
             fishgold.Add(fish);
         }
+
+        GameObject Bigfish;
+        Bigfish = Instantiate(bigFish) as GameObject;
+        Bigfish.transform.position = new Vector3(20, 12, 8);
     }
  
     void Update()
     {
         move_all_boids_to_new_position();
+        move_big_fish();
     }
   
     void limited_velocity(GameObject myFish) // they wont move too fast
@@ -74,7 +81,19 @@ public class BoidsAlgorimth : MonoBehaviour {
         }
 	}
 
-   
+    void move_big_fish()
+    {
+        v1 = cohesion(bigFish) * 0.1f;
+        v2 = seperation(bigFish) * 0.25f;
+        v3 = alignment(bigFish) * 0.1f;
+        v4 = bounding_box(bigFish) * 0.01f;
+
+        bigFish.GetComponent<BoidStat>().velocity = bigFish.GetComponent<BoidStat>().velocity + v1 + v2 + v3 + v4;
+        bigFish.GetComponent<BoidStat>().transform.up = bigFish.GetComponent<BoidStat>().velocity.normalized;
+        limited_velocity(bigFish);
+        bigFish.transform.position += bigFish.GetComponent<BoidStat>().velocity;
+    }
+
     Vector3 bounding_box(GameObject currentFish) // a limited distance boids need to be in 
     {
         Vector3 fish_position = currentFish.transform.position;
