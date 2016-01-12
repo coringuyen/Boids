@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 
 public class BoidsAlgorimth : MonoBehaviour {
     // list of gameobject
@@ -61,6 +60,7 @@ public class BoidsAlgorimth : MonoBehaviour {
             myFish.GetComponent<BoidStat>().velocity = myFish.GetComponent<BoidStat>().velocity.normalized * 0.25f;
         }
     }
+
     public void ExitButton()
     {
             Application.Quit();
@@ -82,19 +82,6 @@ public class BoidsAlgorimth : MonoBehaviour {
 
         }
 	}
-
-    void move_big_fish()
-    {
-        v1 = cohesion(bigFish) * 0.1f;
-        v2 = seperation(bigFish) * 0.25f;
-        v3 = alignment(bigFish) * 0.1f;
-        v4 = bounding_box(bigFish) * 0.01f;
-
-        bigFish.GetComponent<BoidStat>().velocity = bigFish.GetComponent<BoidStat>().velocity + v1 + v2 + v3 + v4;
-        bigFish.GetComponent<BoidStat>().transform.up = bigFish.GetComponent<BoidStat>().velocity.normalized;
-        limited_velocity(bigFish);
-        bigFish.transform.position += bigFish.GetComponent<BoidStat>().velocity;
-    }
 
     Vector3 bounding_box(GameObject currentFish) // a limited distance boids need to be in 
     {
