@@ -9,6 +9,7 @@ public class BoidsGUI : MonoBehaviour {
     public Slider Seperation;
     public Button Exit;
     public Button ResetSliders;
+    public Toggle Target;
 
     float cohesion, alignment, seperation;
 
@@ -20,8 +21,9 @@ public class BoidsGUI : MonoBehaviour {
 
         Exit.GetComponent<RectTransform>().position = new Vector3(Screen.width * 0.8f, Screen.height * 0.95f, 0);
         ResetSliders.GetComponent<RectTransform>().position = new Vector3(Screen.width * 0.2f, Screen.height * 0.95f, 0);
+        Target.GetComponent<RectTransform>().position = new Vector3(Screen.width * 0.5f, Screen.height * 0.95f, 0);
 
-        cohesion = Cohension.value;
+        cohesion = Cohesion.value;
         alignment = Alignment.value;
         seperation = Seperation.value;
 
@@ -30,6 +32,7 @@ public class BoidsGUI : MonoBehaviour {
         Seperation.gameObject.SetActive(true);
         Exit.gameObject.SetActive(true);
         ResetSliders.gameObject.SetActive(true);
+        Target.gameObject.SetActive(true);
     }
 
     public void ResetSlider()

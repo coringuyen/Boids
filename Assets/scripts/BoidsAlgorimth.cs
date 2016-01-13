@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class BoidsAlgorimth : MonoBehaviour {
     // list of gameobject
@@ -8,8 +9,7 @@ public class BoidsAlgorimth : MonoBehaviour {
 
     public int count = 0; // how many time fish need to spawn
     public GameObject spawnfish; // the fish object to spawn
-    public GameObject target; // fish target to go to 
-    public GameObject bigFish; 
+    public GameObject target; // fish target to go to
 
     public Slider cohension_inc; 
     public Slider alignment_inc;
@@ -22,16 +22,16 @@ public class BoidsAlgorimth : MonoBehaviour {
     Vector3 pvj; // perceive velocity, average all boids velocity except itself
     Vector3 force; // to return new position for bounding box
     float limitedVelocity; // limited velocity
-    //int ground_lvl = -60;
-    bool perch;
-
     
     // limited value for bounding box
     public int xmin, xmax, ymin, ymax, zmin, zmax;
-  
+    BoidsGUI boidsgui;
+
     void Start()
     {
-        limitedVelocity = 0.1f;
+        boidsgui = GetComponent<BoidsGUI>();
+
+        limitedVelocity = 0.4f;
         for (int i = 0; i < count; ++i) // spawn gameobject then add it to the list
         {
             GameObject fish;
@@ -43,14 +43,13 @@ public class BoidsAlgorimth : MonoBehaviour {
         }
 
         GameObject Bigfish;
-        Bigfish = Instantiate(bigFish) as GameObject;
-        Bigfish.transform.position = new Vector3(20, 12, 8);
+        Bigfish = Instantiate(target) as GameObject;
+        Bigfish.transform.position = new Vector3(0, 35, -40);
     }
  
     void Update()
     {
         move_all_boids_to_new_position();
-        move_big_fish();
     }
   
     void limited_velocity(GameObject myFish) // they wont move too fast
@@ -101,7 +100,7 @@ public class BoidsAlgorimth : MonoBehaviour {
 
     Vector3 cohesion(GameObject myFish) // come together by centre of mass
     {
-        if (target)
+        if (target && boidsgui.Target.isOn == true)
         {
             return (target.transform.position - myFish.transform.position) / 100; 
         }
