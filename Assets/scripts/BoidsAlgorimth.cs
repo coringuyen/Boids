@@ -8,15 +8,15 @@ public class BoidsAlgorimth : MonoBehaviour {
     public List<GameObject> fishgold;
 
     public int count = 0; // how many time fish need to spawn
-    public GameObject spawnfish; // the fish object to spawn
-    public GameObject target; // fish target to go to
+    public GameObject BoidPreb; // the fish object to spawn
+    public GameObject TargetPreb; // fish target to go to
 
     public Slider cohension_inc; 
     public Slider alignment_inc;
     public Slider seperation_inc;
  
 
-    Vector3 pos; // give random position when fish spawn
+    Vector3 position; // give random position when fish spawn
     Vector3 v1, v2, v3, v4; // assign to the rules
     Vector3 pcj; // centre of mass
     Vector3 pvj; // perceive velocity, average all boids velocity except itself
@@ -26,7 +26,7 @@ public class BoidsAlgorimth : MonoBehaviour {
     // limited value for bounding box
     public int xmin, xmax, ymin, ymax, zmin, zmax;
     BoidsGUI boidsgui;
-    GameObject Bigfish;
+    GameObject Target;
 
     void Start()
     {
@@ -36,15 +36,16 @@ public class BoidsAlgorimth : MonoBehaviour {
         for (int i = 0; i < count; ++i) // spawn gameobject then add it to the list
         {
             GameObject fish;
-            pos = new Vector3(Random.Range(10.0f, -10.0f), Random.Range(1.5f, 10.0f), Random.Range(10.0f, -10.0f));
-            fish = Instantiate(spawnfish) as GameObject;
-            fish.transform.position = pos;
+            position = new Vector3(Random.Range(10.0f, -10.0f), Random.Range(1.5f, 10.0f), Random.Range(10.0f, -10.0f));
+            fish = Instantiate(BoidPreb) as GameObject;
+            fish.transform.position = position;
             fish.transform.parent = gameObject.transform;
             fishgold.Add(fish);
         }
 
-        Bigfish = Instantiate(target) as GameObject;
-        Bigfish.transform.position = new Vector3(0, 35, -40);
+        Target = Instantiate(TargetPreb) as GameObject;
+        Target.transform.position = new Vector3(0, 35, -40);
+
     }
  
     void Update()
@@ -52,11 +53,11 @@ public class BoidsAlgorimth : MonoBehaviour {
         move_all_boids_to_new_position();
     }
   
-    void limited_velocity(GameObject myFish) // they wont move too fast
+    void limited_velocity(GameObject boid) // they wont move too fast
     {
-        if (myFish.GetComponent<BoidStat>().velocity.magnitude > limitedVelocity)
+        if (boid.GetComponent<BoidStat>().velocity.magnitude > limitedVelocity)
         {
-            myFish.GetComponent<BoidStat>().velocity = myFish.GetComponent<BoidStat>().velocity.normalized * 0.25f;
+            boid.GetComponent<BoidStat>().velocity = boid.GetComponent<BoidStat>().velocity.normalized * 0.25f;
         }
     }
 
@@ -67,79 +68,79 @@ public class BoidsAlgorimth : MonoBehaviour {
 
 	void move_all_boids_to_new_position() // move to the position that they should be
 	{
-        foreach(GameObject myFish in fishgold)
+        foreach(GameObject boid in fishgold)
         {
-            v1 = cohesion  (myFish) * cohension_inc.value * 0.1f;
-            v2 = seperation(myFish) * seperation_inc.value * 0.1f;
-            v3 = alignment (myFish) * alignment_inc.value * 0.1f;
-            v4 = bounding_box(myFish) * 0.01f;
+            v1 = cohesion  (boid) * cohension_inc.value * 0.1f;
+            v2 = seperation(boid) * seperation_inc.value * 0.1f;
+            v3 = alignment (boid) * alignment_inc.value * 0.1f;
+            v4 = bounding_box(boid) * 0.01f;
 
-            myFish.GetComponent<BoidStat>().velocity = myFish.GetComponent<BoidStat>().velocity + v1 + v2 + v3 + v4;
-            myFish.GetComponent<BoidStat>().transform.up = myFish.GetComponent<BoidStat>().velocity.normalized;
-            limited_velocity(myFish);
-            myFish.transform.position += myFish.GetComponent<BoidStat>().velocity;
+            boid.GetComponent<BoidStat>().velocity = boid.GetComponent<BoidStat>().velocity + v1 + v2 + v3 + v4;
+            boid.GetComponent<BoidStat>().transform.up = boid.GetComponent<BoidStat>().velocity.normalized;
+            limited_velocity(boid);
+            boid.transform.position += boid.GetComponent<BoidStat>().velocity;
 
         }
 	}
 
-    Vector3 bounding_box(GameObject currentFish) // a limited distance boids need to be in 
+    Vector3 bounding_box(GameObject currentBoid) // a limited distance boids need to be in 
     {
-        Vector3 fish_position = currentFish.transform.position;
+        Vector3 boid_position = currentBoid.transform.position;
         
-        if (fish_position.x < xmin)      { force.x = xmin - fish_position.x; }
-        else if (fish_position.x > xmax) { force.x = xmax - fish_position.x; }
+        if (boid_position.x < xmin)      { force.x = xmin - boid_position.x; }
+        else if (boid_position.x > xmax) { force.x = xmax - boid_position.x; }
 
-        if (fish_position.y < ymin)      { force.y = ymin - fish_position.y; }
-        else if (fish_position.y > ymax) { force.y = ymax - fish_position.y; }
+        if (boid_position.y < ymin)      { force.y = ymin - boid_position.y; }
+        else if (boid_position.y > ymax) { force.y = ymax - boid_position.y; }
 
-        if (fish_position.z < zmin)      { force.z = zmin - fish_position.z; }
-        else if (fish_position.z > zmax) { force.z = zmax - fish_position.z; }
+        if (boid_position.z < zmin)      { force.z = zmin - boid_position.z; }
+        else if (boid_position.z > zmax) { force.z = zmax - boid_position.z; }
 
         return force;
     }
 
-    Vector3 cohesion(GameObject myFish) // come together by centre of mass
+    Vector3 cohesion(GameObject boid) // come together by centre of mass
     {
-        if (Bigfish && boidsgui.Target.isOn == true)
+        if (Target && boidsgui.Target.isOn == true)
         {
-            return (Bigfish.transform.position - myFish.transform.position) / 100; 
+            return (Target.transform.position - boid.transform.position) / 100; 
         }
 
         else foreach (GameObject f in fishgold)
         {
-            if (f != myFish)
+            if (f != boid)
             { pcj += f.transform.position; }
         }
 
         pcj = pcj / (fishgold.Count - 1);
-        return (pcj - myFish.transform.position) / 100;
+        return (pcj - boid.transform.position) / 100;
     }
 
-    Vector3 seperation(GameObject myFish) // they won't be on top of each other or touch each other
+    Vector3 seperation(GameObject boid) // they won't be on top of each other or touch each other
     {
         Vector3 displacement = new Vector3(0,0,0);
 
         foreach (GameObject f in fishgold)
         {
-            if (f != myFish)
+            if (f != boid)
             {
-                if (Vector3.Distance(f.transform.position, myFish.transform.position) < 6) 
-                { displacement = displacement - (f.transform.position - myFish.transform.position); }
+                if (Vector3.Distance(f.transform.position, boid.transform.position) < 6) 
+                { displacement = displacement - (f.transform.position - boid.transform.position); }
             }
         }
 
         return displacement;
     }
 
-    Vector3 alignment(GameObject myFish) // boids match velocity
+    Vector3 alignment(GameObject boid) // boids match velocity
     {
         foreach (GameObject f in fishgold)
         {
-            if (f != myFish)
+            if (f != boid)
             { pvj += f.GetComponent<BoidStat>().velocity; }
         }
 
         pvj = pvj / (fishgold.Count - 1);
-        return (pvj - myFish.GetComponent<BoidStat>().velocity) / 8;
+        return (pvj - boid.GetComponent<BoidStat>().velocity) / 8;
     }
 }
