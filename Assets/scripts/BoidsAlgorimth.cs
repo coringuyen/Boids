@@ -26,6 +26,7 @@ public class BoidsAlgorimth : MonoBehaviour {
     // limited value for bounding box
     public int xmin, xmax, ymin, ymax, zmin, zmax;
     BoidsGUI boidsgui;
+    GameObject Bigfish;
 
     void Start()
     {
@@ -42,7 +43,6 @@ public class BoidsAlgorimth : MonoBehaviour {
             fishgold.Add(fish);
         }
 
-        GameObject Bigfish;
         Bigfish = Instantiate(target) as GameObject;
         Bigfish.transform.position = new Vector3(0, 35, -40);
     }
@@ -100,9 +100,9 @@ public class BoidsAlgorimth : MonoBehaviour {
 
     Vector3 cohesion(GameObject myFish) // come together by centre of mass
     {
-        if (target && boidsgui.Target.isOn == true)
+        if (Bigfish && boidsgui.Target.isOn == true)
         {
-            return (target.transform.position - myFish.transform.position) / 100; 
+            return (Bigfish.transform.position - myFish.transform.position) / 100; 
         }
 
         else foreach (GameObject f in fishgold)
