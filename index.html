@@ -1,0 +1,462 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Boids by coringuyen</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/coringuyen/Boids">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/coringuyen/Boids/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/coringuyen/Boids/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Boids</h1>
+          <p>Boids simulation</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/coringuyen">coringuyen</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h1>
+
+<h2>
+<a id="problem-description" class="anchor" href="#problem-description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Problem Description</h2>
+
+<p>Name: Boids Simulation</p>
+
+<p>Problem Statement: Boids is an artificial intelligence so they will making decision depend on this 3 rules are cohesion, alignment, and separation.</p>
+
+<p>Problem Specification: Calculate average distance of boids for cohesion. Calculate average velocity of boids exxcept itself for alignment. Calculate distance between the boids for seperation.</p>
+
+<h2>
+<a id="user-interface-information" class="anchor" href="#user-interface-information" aria-hidden="true"><span class="octicon octicon-link"></span></a>User Interface Information</h2>
+
+<p>Name: Cohesion
+Description: Boids center of mass. The average distance of all the boid</p>
+
+<p>Name: Alignment
+Description: The average of boids velocity</p>
+
+<p>Name: Seperation
+Description: A distance that boids will maintain from each others</p>
+
+<p>Name: Exit
+Description: Quit the aplication</p>
+
+<p>Name: Resest Sliders
+Description: reset Cohension, Alignment, and Seperation back to their default value</p>
+
+<p>Name: Target
+Description: when the check box is check all the boids will move toward the target</p>
+
+<h2>
+<a id="functions-information" class="anchor" href="#functions-information" aria-hidden="true"><span class="octicon octicon-link"></span></a>Functions Information</h2>
+
+<p>File: BoidStat.cs
+Class: BoidStat
+Data members:
+    Name: Velocity
+    Description: boid speed over time</p>
+
+<p>Function: Start
+Parameters: n/a
+Description: Set Velocity to some random value
+Return: n/a</p>
+
+<p>File: BoidsAlgorimth.cs
+Class: BoidsAlgorimth
+Data members:
+    Name: fishgold
+    Description: a list of gameobject to hold gameobject when it instantiate</p>
+
+<pre><code>Name: count
+Description: an interger to how many boid that need to be instantiate
+
+Name: BoidPreb
+Description: a gameobject that will use to spawn boids
+
+Name: TargetPreb
+Description: a gameobject that will use to spawn a target for boids
+
+Name: cohesion_inc
+Description: slider for user interface
+
+Name: alignment_inc
+Description: slider for user interface
+
+Name: seperation_inc
+Description: slider for user interface
+
+Name: position
+Description: use pos to give boid a random position when its spawn
+
+Name: v1
+Description: use this vector to store cohension value after calculation
+
+Name: v2
+Description: use this vector to store seperation value after calculation
+
+Name: v3
+Description: use this vector to store alignment value after calculation
+
+Name: v4
+Description: use this vector to store bounding box value after calculation
+
+Name: pcj
+Description: use pcj to store the value of center of mass calculation
+
+Name: pvj
+Description: use pvj to store the value of boids average velocity except itself
+
+Name: force
+Description: use this vector to change boids position to opposite direction when 
+they hit the box limit
+
+Name: limitedVelocity
+Description: use this float to limited boid Velocity so its won't go too fast
+
+Name: boidsgui
+Description: access BoidsGUI class components
+</code></pre>
+
+<p>Function: Start
+Parameters: n/a
+Description: spawn boids
+Return: n/a</p>
+
+<p>Function: Update
+Parameters: n/a
+Description: update boids position to a new position every frame.
+Return: n/a</p>
+
+<p>Function: limited_velocity
+Parameters: GameObject myFish
+Description: limited boids velocity when their velocity go over a certain value that is giving.
+Return: n/a</p>
+
+<p>Function: ExitButton
+Parameters: n/a
+Description: quit application 
+Return: n/a</p>
+
+<p>Function: move_all_boids_to_new_position
+Parameters: n/a
+Description: all the calculation are call within this function to update boids position
+Return: n/a</p>
+
+<p>Function: bounding_box
+Parameters: GameObject currentFish
+Description: there are limited space where boids can go. This is to make the boids won't go too far away and just stay within a certain space that is giving.
+Return: Vector3 force</p>
+
+<p>Function: cohesion
+Parameters: GameObject myFish
+Description: calculate boids center of mass which is their distance average.
+Return: Vector3</p>
+
+<p>Function: seperation
+Parameters: GameObject myFish
+Description: there are certain distance that each boid have for each other so they won't go on top of each other. This function calculate the distance that they need to be away from each other.
+Return: Vector3</p>
+
+<p>Function: alignment
+Parameters: GameObject myFish
+Description: All the boids will try to match each other velocity. This function calculate boids average velocity.
+Return: Vector3</p>
+
+<p>File: BoidsGUI
+Class: BoidsGUI
+Data members
+    Name: Cohesion
+    Description: a slider for user input</p>
+
+<pre><code>Name: Alignment
+Description: a slider for user input
+
+Name: Seperation
+Description: a slider for user input
+
+Name: Exit
+Description: a button to click when user want to quit the application
+
+Name: ResetSliders
+Description: a button to reset all the sliders back to the default value
+
+Name: cohesion
+Description: a float to store Cohesion slider value
+
+Name: alignment
+Description: a float to store Alignment slider value
+
+Name: seperation
+Description: a float to store Seperation slider value
+
+Name: Target
+Description: a boolean for user input
+</code></pre>
+
+<p>Function: Start
+Parameters: n/a
+Description: Set all the GUI elements position base on the screen resolution, and active all the GUI elements that need to appear from the start
+Return: n/a</p>
+
+<p>Function: ResetSlider
+Parameters: n/a
+Description: set all the sliders value back to their default value
+Return: n/a</p>
+
+<h2>
+<a id="implementation" class="anchor" href="#implementation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Implementation</h2>
+
+<p>File: BoidStat.cs
+using UnityEngine;
+using System.Collections;</p>
+
+<p>Function: Start
+Parameters: n/a
+Description: Set Velocity to some random value
+Return: n/a
+void Start()
+{
+   velocity = new Vector3(Random.Range(0.2f, -0.2f), Random.Range(0.5f, -0.2f),                                 Random.Range(0.2f, -0.20f));
+}
+File: BoidsAlgorimth.cs
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;</p>
+
+<p>Function: Start
+Parameters: n/a
+Description: spawn boids
+Return: n/a
+void Start()
+{
+    limitedVelocity = 0.1f;
+    for (int i = 0; i &lt; count; ++i) 
+    {
+        GameObject fish;
+        pos = new Vector3(Random.Range(10.0f, -10.0f), Random.Range(1.5f,                       10.0f), Random.Range(10.0f, -10.0f));
+        fish = Instantiate(spawnfish) as GameObject;
+        fish.transform.position = pos;
+        fish.transform.parent = gameObject.transform;
+        fishgold.Add(fish);
+    }</p>
+
+<p>}</p>
+
+<p>Function: Update
+Parameters: n/a
+Description: update boids position to a new position every frame
+Return: n/a
+void Update()
+{
+    move_all_boids_to_new_position();
+}</p>
+
+<p>Function: limited_velocity
+Parameters: GameObject myFish
+Description: limited boids velocity when their velocity go over a certain value that is giving 
+Return: n/a
+void limited_velocity(GameObject myFish) // they wont move too fast
+{
+    if (myFish.GetComponent().velocity.magnitude &gt; limitedVelocity)
+    {
+        myFish.GetComponent().velocity =                          myFish.GetComponent().velocity.normalized * 0.25f;
+    }
+}</p>
+
+<p>Function: ExitButton
+Parameters: n/a
+Description: quit application 
+Return: n/a
+public void ExitButton()
+{
+    Application.Quit();
+}</p>
+
+<p>Function: move_all_boids_to_new_position
+Parameters: n/a
+Description: all the calculation are call within this function to update boids position
+Return: n/a
+void move_all_boids_to_new_position()
+{
+    foreach(GameObject myFish in fishgold)
+    {
+        v1 = cohesion  (myFish) * cohension_inc.value * 0.1f;
+        v2 = seperation(myFish) * seperation_inc.value * 0.1f;
+        v3 = alignment (myFish) * alignment_inc.value * 0.1f;
+        v4 = bounding_box(myFish) * 0.01f;</p>
+
+<pre><code>    myFish.GetComponent&lt;BoidStat&gt;().velocity = 
+    myFish.GetComponent&lt;BoidStat&gt;().velocity + v1 + v2 + v3 + v4;
+    myFish.GetComponent&lt;BoidStat&gt;().transform.up =                      myFish.GetComponent&lt;BoidStat&gt;().velocity.normalized;
+    limited_velocity(myFish);
+    myFish.transform.position += myFish.GetComponent&lt;BoidStat&gt;().velocity;
+
+ }
+</code></pre>
+
+<p>}</p>
+
+<p>Function: bounding_box
+Parameters: GameObject currentFish
+Description: there are limited space where boids can go. This is to make the boids won't go too far away and just stay within a certain space that is giving
+Return: Vector3 force
+Vector3 bounding_box(GameObject currentFish)
+{
+    Vector3 fish_position = currentFish.transform.position;</p>
+
+<pre><code>if (fish_position.x &lt; xmin)      { force.x = xmin - fish_position.x; }
+else if (fish_position.x &gt; xmax) { force.x = xmax - fish_position.x; }
+
+if (fish_position.y &lt; ymin)      { force.y = ymin - fish_position.y; }
+else if (fish_position.y &gt; ymax) { force.y = ymax - fish_position.y; }
+
+if (fish_position.z &lt; zmin)      { force.z = zmin - fish_position.z; }
+else if (fish_position.z &gt; zmax) { force.z = zmax - fish_position.z; }
+
+return force;
+</code></pre>
+
+<p>}</p>
+
+<p>Function: cohesion
+Parameters: GameObject myFish
+Description: calculate boids center of mass which is their distance average
+Return: Vector3
+Vector3 cohesion(GameObject myFish) 
+{
+    if (Bigfish &amp;&amp; boidsgui.Target.isOn == true)
+    {
+        return (Bigfish.transform.position - myFish.transform.position) / 100; 
+    }</p>
+
+<pre><code>else foreach (GameObject f in fishgold)
+{
+    if (f != myFish)
+    { pcj += f.transform.position; }
+}
+
+pcj = pcj / (fishgold.Count - 1);
+return (pcj - myFish.transform.position) / 100;
+</code></pre>
+
+<p>}</p>
+
+<p>Function: seperation
+Parameters: GameObject myFish
+Description: there are certain distance that each boid have for each other so they won't go on top of each other. This function calculate the distance that they need to be away from each other
+Return: Vector3
+Vector3 seperation(GameObject myFish) 
+{
+    Vector3 displacement = new Vector3(0,0,0);</p>
+
+<pre><code>foreach (GameObject f in fishgold)
+{
+    if (f != myFish)
+    {
+        if (Vector3.Distance(f.transform.position,                                      myFish.transform.position) &lt; 6) 
+        { displacement = displacement - (f.transform.position -                                     myFish.transform.position); }
+     }
+ }
+
+ return displacement;
+</code></pre>
+
+<p>}</p>
+
+<p>Function: alignment
+Parameters: GameObject myFish
+Description: All the boids will try to match each other velocity. This function calculate boids average velocity. 
+Return: Vector3
+Vector3 alignment(GameObject myFish)
+{
+    foreach (GameObject f in fishgold)
+    {
+        if (f != myFish)
+        { pvj += f.GetComponent().velocity; }
+    }</p>
+
+<pre><code>pvj = pvj / (fishgold.Count - 1);
+return (pvj - myFish.GetComponent&lt;BoidStat&gt;().velocity) / 8;
+</code></pre>
+
+<p>}</p>
+
+<p>File: BoidsGUI
+using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;</p>
+
+<p>Function: Start
+Parameters: n/a
+Description: Set all the GUI elements position base on the screen resolution, and active all the GUI elements that need to appear from the start
+Return: n/a
+void Start()
+{
+    Cohesion.GetComponent().position = 
+            new Vector3(Screen.width *0.5f, Screen.height * 0.1f, 0);
+    Alignment.GetComponent().position = 
+            new Vector3(Screen.width * 0.2f, Screen.height * 0.1f, 0);
+    Seperation.GetComponent().position = 
+            new Vector3(Screen.width * 0.8f, Screen.height * 0.1f, 0);
+    Exit.GetComponent().position = 
+            new Vector3(Screen.width * 0.8f, Screen.height * 0.95f, 0);
+    ResetSliders.GetComponent().position = 
+            new Vector3(Screen.width * 0.2f, Screen.height * 0.95f, 0);
+    Target.GetComponent().position = 
+            new Vector3(Screen.width *0.5f, Screen.height * 0.95f, 0);</p>
+
+<pre><code>cohesion = Cohension.value;
+alignment = Alignment.value;
+seperation = Seperation.value;
+
+Cohesion.gameObject.SetActive(true);
+Alignment.gameObject.SetActive(true);
+Seperation.gameObject.SetActive(true);
+Exit.gameObject.SetActive(true);
+ResetSliders.gameObject.SetActive(true);
+</code></pre>
+
+<p>}</p>
+
+<p>Function: ResetSlider
+Parameters: n/a
+Description: set all the sliders value back to their default value
+Return: n/a</p>
+
+<p>public void ResetSlider()
+{
+    Cohesion.value = cohesion;
+    Alignment.value = alignment;
+    Seperation.value = seperation;
+}</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
