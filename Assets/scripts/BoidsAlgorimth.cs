@@ -32,7 +32,7 @@ public class BoidsAlgorimth : MonoBehaviour {
     {
         boidsgui = GetComponent<BoidsGUI>();
 
-        limitedVelocity = 0.4f;
+        limitedVelocity = 0.6f;
         for (int i = 0; i < count; ++i) // spawn gameobject then add it to the list
         {
             GameObject fish;
