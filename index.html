@@ -21,8 +21,6 @@
       <div id="header">
         <nav>
           <li class="fork"><a href="https://github.com/coringuyen/Boids">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/coringuyen/Boids/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/coringuyen/Boids/tarball/master">TAR</a></li>
           <li class="title">DOWNLOADS</li>
         </nav>
       </div><!-- end header -->
@@ -53,22 +51,22 @@
 <h2>
 <a id="user-interface-information" class="anchor" href="#user-interface-information" aria-hidden="true"><span class="octicon octicon-link"></span></a>User Interface Information</h2>
 
-<p>Name: Cohesion
+<p>Name: Cohesion<br/>
 Description: Boids center of mass. The average distance of all the boid</p>
 
-<p>Name: Alignment
+<p>Name: Alignment<br/>
 Description: The average of boids velocity</p>
 
-<p>Name: Seperation
+<p>Name: Seperation<br/>
 Description: A distance that boids will maintain from each others</p>
 
-<p>Name: Exit
+<p>Name: Exit<br/>
 Description: Quit the aplication</p>
 
-<p>Name: Resest Sliders
+<p>Name: Resest Sliders<br/>
 Description: reset Cohension, Alignment, and Seperation back to their default value</p>
 
-<p>Name: Target
+<p>Name: Target<br/>
 Description: when the check box is check all the boids will move toward the target</p>
 
 <h2>
@@ -91,55 +89,54 @@ Data members:
     Name: fishgold
     Description: a list of gameobject to hold gameobject when it instantiate</p>
 
-<pre><code>Name: count
-Description: an interger to how many boid that need to be instantiate
+<p>Name: count
+Description: an interger to how many boid that need to be instantiate</p>
 
-Name: BoidPreb
-Description: a gameobject that will use to spawn boids
+<p>Name: BoidPreb
+Description: a gameobject that will use to spawn boids</p>
 
-Name: TargetPreb
-Description: a gameobject that will use to spawn a target for boids
+<p>Name: TargetPreb
+Description: a gameobject that will use to spawn a target for boids</p>
 
-Name: cohesion_inc
-Description: slider for user interface
+<p>Name: cohesion_inc
+Description: slider for user interface</p>
 
-Name: alignment_inc
-Description: slider for user interface
+<p>Name: alignment_inc
+Description: slider for user interface</p>
 
-Name: seperation_inc
-Description: slider for user interface
+<p>Name: seperation_inc
+Description: slider for user interface</p>
 
-Name: position
-Description: use pos to give boid a random position when its spawn
+<p>Name: position
+Description: use pos to give boid a random position when its spawn</p>
 
-Name: v1
-Description: use this vector to store cohension value after calculation
+<p>Name: v1
+Description: use this vector to store cohension value after calculation</p>
 
-Name: v2
-Description: use this vector to store seperation value after calculation
+<p>Name: v2
+Description: use this vector to store seperation value after calculation</p>
 
-Name: v3
-Description: use this vector to store alignment value after calculation
+<p>Name: v3
+Description: use this vector to store alignment value after calculation</p>
 
-Name: v4
-Description: use this vector to store bounding box value after calculation
+<p>Name: v4
+Description: use this vector to store bounding box value after calculation</p>
 
-Name: pcj
-Description: use pcj to store the value of center of mass calculation
+<p>Name: pcj
+Description: use pcj to store the value of center of mass calculation</p>
 
-Name: pvj
-Description: use pvj to store the value of boids average velocity except itself
+<p>Name: pvj
+Description: use pvj to store the value of boids average velocity except itself</p>
 
-Name: force
+<p>Name: force
 Description: use this vector to change boids position to opposite direction when 
-they hit the box limit
+they hit the box limit</p>
 
-Name: limitedVelocity
-Description: use this float to limited boid Velocity so its won't go too fast
+<p>Name: limitedVelocity
+Description: use this float to limited boid Velocity so its won't go too fast</p>
 
-Name: boidsgui
-Description: access BoidsGUI class components
-</code></pre>
+<p>Name: boidsgui
+Description: access BoidsGUI class components</p>
 
 <p>Function: Start
 Parameters: n/a
@@ -240,7 +237,7 @@ Description: Set Velocity to some random value
 Return: n/a
 void Start()
 {
-   velocity = new Vector3(Random.Range(0.2f, -0.2f), Random.Range(0.5f, -0.2f),                                 Random.Range(0.2f, -0.20f));
+   velocity = new Vector3(Random.Range(0.2f, -0.2f), Random.Range(0.5f, -0.2f), Random.Range(0.2f, -0.20f));
 }
 File: BoidsAlgorimth.cs
 using UnityEngine;
