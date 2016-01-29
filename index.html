@@ -30,426 +30,418 @@
       <section>
         <div id="title">
           <h1>Boids</h1>
-          <p>Boids simulation</p>
+          <p style="font-size:20px">Boids simulation</p>
           <hr>
           <span class="credits left">Project maintained by <a href="https://github.com/coringuyen">coringuyen</a></span>
           <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
         </div>
 
         <h1>
-<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h1>
+<center><a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a><ins>Documentation</ins></h1></center>
 
 <h2>
-<a id="problem-description" class="anchor" href="#problem-description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Problem Description</h2>
+<center><a id="problem-description" class="anchor" href="#problem-description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Problem Description</h2></center>
 
-<p>Name: Boids Simulation</p>
+<p style="font-size:20px"><b>Name</b>: Boids Simulation</p>
+<p style="font-size:20px"><b>Problem Statement</b>: Boids is an artificial intelligence. They will making decision depend on this 3 rules are cohesion, alignment, and separation.</p>
 
-<p>Problem Statement: Boids is an artificial intelligence so they will making decision depend on this 3 rules are cohesion, alignment, and separation.</p>
-
-<p>Problem Specification: Calculate average distance of boids for cohesion. Calculate average velocity of boids exxcept itself for alignment. Calculate distance between the boids for seperation.</p>
+<p style="font-size:20px"><b>Problem Specification</b>: Calculate average distance of boids for cohesion. Calculate average velocity of boids except itself for alignment. Calculate distance between the boids for seperation.</p>
 
 <h2>
-<a id="user-interface-information" class="anchor" href="#user-interface-information" aria-hidden="true"><span class="octicon octicon-link"></span></a>User Interface Information</h2>
+<center><a id="user-interface-information" class="anchor" href="#user-interface-information" aria-hidden="true"><span class="octicon octicon-link"></span></a>User Interface Information</h2></center>
 
-<p>Name: Cohesion<br/>
+<p style="font-size:20px">Name: Cohesion<br/>
 Description: Boids center of mass. The average distance of all the boid</p>
 
-<p>Name: Alignment<br/>
+<p style="font-size:20px">Name: Alignment<br/>
 Description: The average of boids velocity</p>
 
-<p>Name: Seperation<br/>
+<p style="font-size:20px">Name: Seperation<br/>
 Description: A distance that boids will maintain from each others</p>
 
-<p>Name: Exit<br/>
+<p style="font-size:20px">Name: Exit<br/>
 Description: Quit the aplication</p>
 
-<p>Name: Resest Sliders<br/>
+<p style="font-size:20px">Name: Resest Sliders<br/>
 Description: reset Cohension, Alignment, and Seperation back to their default value</p>
 
-<p>Name: Target<br/>
-Description: when the check box is check all the boids will move toward the target</p>
+<p style="font-size:20px">Name: Target<br/>
+Description: when the check box is check all the boids will move toward to the target</p>
 
 <h2>
-<a id="functions-information" class="anchor" href="#functions-information" aria-hidden="true"><span class="octicon octicon-link"></span></a>Functions Information</h2>
+<center><a id="functions-information" class="anchor" href="#functions-information" aria-hidden="true"><span class="octicon octicon-link"></span></a>Functions Information</h2></center>
 
-<p>File: BoidStat.cs
-Class: BoidStat
-Data members:
-    Name: Velocity
-    Description: boid speed over time</p>
+<p style="font-size:20px"><b>File</b>: BoidStat.cs<br/>
+Class: BoidStat<br/>
+Data members:<br/>
+     <span style="padding-left:68px;">Name: Velocity<br/>
+     <span style="padding-left:68px;">Description: boid speed over time</p>
 
-<p>Function: Start
-Parameters: n/a
-Description: Set Velocity to some random value
+<p style="font-size:20px">Function: Start<br/>
+Parameters: n/a<br/>
+Description: Set Velocity to some random value<br/>
 Return: n/a</p>
 
-<p>File: BoidsAlgorimth.cs
-Class: BoidsAlgorimth
-Data members:
-    Name: fishgold
-    Description: a list of gameobject to hold gameobject when it instantiate</p>
+<p style="font-size:20px"><b>File</b>: BoidsAlgorimth.cs<br/>
+Class: BoidsAlgorimth<br/>
+Data members:<br/>
+     <span style="padding-left:68px;">Name: fishgold</span><br/>
+     <span style="padding-left:68px;">Description: a list of gameobject to hold gameobject when it <span style="padding-left:68px;">instantiate</span></p>
 
-<p>Name: count
-Description: an interger to how many boid that need to be instantiate</p>
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: count<br/>
+	 <span style="padding-left:68px;">Description: an interger to how many boid that need to be <span style="padding-left:68px;">instantiate</span></p>
 
-<p>Name: BoidPreb
-Description: a gameobject that will use to spawn boids</p>
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: BoidPreb</span><br/>
+	 <span style="padding-left:68px;">Description: a gameobject that will use to spawn boids</span></p>
 
-<p>Name: TargetPreb
-Description: a gameobject that will use to spawn a target for boids</p>
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: TargetPreb</span><br/>
+	 <span style="padding-left:68px;">Description: a gameobject that will use to spawn a target for <span style="padding-left:68px;">boids</p></span>
 
-<p>Name: cohesion_inc
-Description: slider for user interface</p>
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: cohesion_inc</span><br/>
+	 <span style="padding-left:68px;">Description: slider for user interface</p></span>
 
-<p>Name: alignment_inc
-Description: slider for user interface</p>
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: alignment_inc</span><br/>
+	 <span style="padding-left:68px;">Description: slider for user interface</p></span>
 
-<p>Name: seperation_inc
-Description: slider for user interface</p>
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: seperation_inc</span><br/>
+	 <span style="padding-left:68px;">Description: slider for user interface</p></span>
 
-<p>Name: position
-Description: use pos to give boid a random position when its spawn</p>
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: position</span><br/>
+	 <span style="padding-left:68px;">Description: use pos to give boid a random position when its <span style="padding-left:68px;">spawn</p></span>
 
-<p>Name: v1
-Description: use this vector to store cohension value after calculation</p>
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: v1</span><br/>
+	 <span style="padding-left:68px;">Description: use this vector to store cohension value after <span style="padding-left:68px;">calculation</p></span>
 
-<p>Name: v2
-Description: use this vector to store seperation value after calculation</p>
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: v2</span><br/>
+	 <span style="padding-left:68px;">Description: use this vector to store seperation value after <span style="padding-left:68px;">calculation</p></span>
 
-<p>Name: v3
-Description: use this vector to store alignment value after calculation</p>
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: v3</span><br/>
+	 <span style="padding-left:68px;">Description: use this vector to store alignment value after <span style="padding-left:68px;">calculation</p></span>
 
-<p>Name: v4
-Description: use this vector to store bounding box value after calculation</p>
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: v4</span><br/>
+	 <span style="padding-left:68px;">Description: use this vector to store bounding box value after <span style="padding-left:68px;">calculation</p></span>
 
-<p>Name: pcj
-Description: use pcj to store the value of center of mass calculation</p>
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: pcj</span><br/>
+	 <span style="padding-left:68px;">Description: use pcj to store the value of center of mass <span style="padding-left:68px;">calculation</p></span>
 
-<p>Name: pvj
-Description: use pvj to store the value of boids average velocity except itself</p>
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: pvj</span><br/>
+	 <span style="padding-left:68px;">Description: use pvj to store the value of boids average velocity <span style="padding-left:68px;">except itself</p></span>
 
-<p>Name: force
-Description: use this vector to change boids position to opposite direction when 
-they hit the box limit</p>
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: force</span><br/>
+	 <span style="padding-left:68px;">Description: use this vector to change boids position to opposite <span style="padding-left:68px;">direction when 
+	they hit the box limit</p></span>
 
-<p>Name: limitedVelocity
-Description: use this float to limited boid Velocity so its won't go too fast</p>
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: limitedVelocity</span><br/>
+	 <span style="padding-left:68px;">Description: use this float to limited boid Velocity so its won't go <span style="padding-left:68px;">too fast</p></span>
 
-<p>Name: boidsgui
-Description: access BoidsGUI class components</p>
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: boidsgui</span><br/>
+	 <span style="padding-left:68px;">Description: access BoidsGUI class components</p></span>
 
-<p>Function: Start
-Parameters: n/a
-Description: spawn boids
+<p style="font-size:20px">Function: Start<br/>
+Parameters: n/a<br/>
+Description: spawn boids<br/>
 Return: n/a</p>
 
-<p>Function: Update
-Parameters: n/a
-Description: update boids position to a new position every frame.
+<p style="font-size:20px">Function: Update<br/>
+Parameters: n/a<br/>
+Description: update boids position to a new position every frame.<br/>
 Return: n/a</p>
 
-<p>Function: limited_velocity
-Parameters: GameObject myFish
-Description: limited boids velocity when their velocity go over a certain value that is giving.
+<p style="font-size:20px">Function: limited_velocity<br/>
+Parameters: GameObject myFish<br/>
+Description: limited boids velocity when their velocity go over a certain value that is giving.<br/>
 Return: n/a</p>
 
-<p>Function: ExitButton
-Parameters: n/a
-Description: quit application 
+<p style="font-size:20px">Function: ExitButton<br/>
+Parameters: n/a<br/>
+Description: quit application <br/>
 Return: n/a</p>
 
-<p>Function: move_all_boids_to_new_position
-Parameters: n/a
-Description: all the calculation are call within this function to update boids position
+<p style="font-size:20px">Function: move_all_boids_to_new_position<br/>
+Parameters: n/a<br/>
+Description: all the calculation are call within this function to update boids position<br/>
 Return: n/a</p>
 
-<p>Function: bounding_box
-Parameters: GameObject currentFish
-Description: there are limited space where boids can go. This is to make the boids won't go too far away and just stay within a certain space that is giving.
+<p style="font-size:20px">Function: bounding_box<br/>
+Parameters: GameObject currentFish<br/>
+Description: there are limited space where boids can go. This is to make the boids won't go too far away and just stay within a certain space that is giving.<br/>
 Return: Vector3 force</p>
 
-<p>Function: cohesion
-Parameters: GameObject myFish
-Description: calculate boids center of mass which is their distance average.
+<p style="font-size:20px">Function: cohesion<br/>
+Parameters: GameObject myFish<br/>
+Description: calculate boids center of mass which is their distance average.<br/>
 Return: Vector3</p>
 
-<p>Function: seperation
-Parameters: GameObject myFish
-Description: there are certain distance that each boid have for each other so they won't go on top of each other. This function calculate the distance that they need to be away from each other.
+<p style="font-size:20px">Function: seperation<br/>
+Parameters: GameObject myFish<br/>
+Description: there are certain distance that each boid have for each other so they won't go on top of each other. This function calculate the distance that they need to be away from each other.<br/>
 Return: Vector3</p>
 
-<p>Function: alignment
-Parameters: GameObject myFish
-Description: All the boids will try to match each other velocity. This function calculate boids average velocity.
+<p style="font-size:20px">Function: alignment<br/>
+Parameters: GameObject myFish<br/>
+Description: All the boids will try to match each other velocity. This function calculate boids average velocity<br/>
 Return: Vector3</p>
 
-<p>File: BoidsGUI
-Class: BoidsGUI
-Data members
-    Name: Cohesion
-    Description: a slider for user input</p>
+<p style="font-size:20px"><b>File</b>: BoidsGUI<br/>
+Class: BoidsGUI<br/>
+Data members<br/>
+    <span style="padding-left:68px;">Name: Cohesion</span><br/>
+    <span style="padding-left:68px;">Description: a slider for user input</p></span>
 
-<pre><code>Name: Alignment
-Description: a slider for user input
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: Alignment</span><br/>
+	 <span style="padding-left:68px;">Description: a slider for user input</p></span>
 
-Name: Seperation
-Description: a slider for user input
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: Seperation</span><br/>
+	 <span style="padding-left:68px;">Description: a slider for user input</p></span>
 
-Name: Exit
-Description: a button to click when user want to quit the application
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: Exit</span><br/>
+	 <span style="padding-left:68px;">Description: a button to click when user want to quit the <span style="padding-left:68px;">application</p></span>
 
-Name: ResetSliders
-Description: a button to reset all the sliders back to the default value
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: ResetSliders</span><br/>
+	 <span style="padding-left:68px;">Description: a button to reset all the sliders back to the default <span style="padding-left:68px;">value</p></span>
 
-Name: cohesion
-Description: a float to store Cohesion slider value
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: cohesion</span><br/>
+	 <span style="padding-left:68px;">Description: a float to store Cohesion slider value</p></span>
 
-Name: alignment
-Description: a float to store Alignment slider value
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: alignment</span><br/>
+	 <span style="padding-left:68px;">Description: a float to store Alignment slider value</p></span>
 
-Name: seperation
-Description: a float to store Seperation slider value
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: seperation</span><br/>
+	 <span style="padding-left:68px;">Description: a float to store Seperation slider value</p></span>
 
-Name: Target
-Description: a boolean for user input
-</code></pre>
+	 <p style="font-size:20px"><span style="padding-left:68px;">Name: Target</span><br/>
+	 <span style="padding-left:68px;">Description: a boolean for user input</p></span>
 
-<p>Function: Start
-Parameters: n/a
-Description: Set all the GUI elements position base on the screen resolution, and active all the GUI elements that need to appear from the start
+
+<p style="font-size:20px">Function: Start<br/>
+Parameters: n/a<br/>
+Description: Set all the GUI elements position base on the screen resolution, and active all the GUI elements that need to appear from the start<br/>
 Return: n/a</p>
 
-<p>Function: ResetSlider
-Parameters: n/a
-Description: set all the sliders value back to their default value
+<p style="font-size:20px">Function: ResetSlider<br/>
+Parameters: n/a<br/>
+Description: set all the sliders value back to their default value<br/>
 Return: n/a</p>
 
 <h2>
-<a id="implementation" class="anchor" href="#implementation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Implementation</h2>
+<center><a id="implementation" class="anchor" href="#implementation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Implementation</h2></center>
 
-<p>File: BoidStat.cs
-using UnityEngine;
+<p style="font-size:20px"><b>File</b>: BoidStat.cs<br/>
+using UnityEngine;<br/>
 using System.Collections;</p>
 
-<p>Function: Start
-Parameters: n/a
-Description: Set Velocity to some random value
-Return: n/a
-void Start()
+<p style="font-size:20px">#Function: Start<br/>
+#Parameters: n/a<br/>
+#Description: Set Velocity to some random value<br/>
+#Return: n/a<br/>
+<pre><code>void Start()
 {
    velocity = new Vector3(Random.Range(0.2f, -0.2f), Random.Range(0.5f, -0.2f), Random.Range(0.2f, -0.20f));
-}
-File: BoidsAlgorimth.cs
-using UnityEngine;
-using System.Collections;
+}</code></pre>
+
+<p style="font-size:20px"><b>File</b>: BoidsAlgorimth.cs<br/>
+using UnityEngine;<br/>
+using System.Collections;<br/>
 using System.Collections.Generic;</p>
 
-<p>Function: Start
-Parameters: n/a
-Description: spawn boids
-Return: n/a
-void Start()
+<p style="font-size:20px">#Function: Start<br/>
+#Parameters: n/a<br/>
+#Description: spawn boids<br/>
+#Return: n/a</p>
+<pre><code>void Start()
 {
     limitedVelocity = 0.1f;
     for (int i = 0; i &lt; count; ++i) 
     {
         GameObject fish;
-        pos = new Vector3(Random.Range(10.0f, -10.0f), Random.Range(1.5f,                       10.0f), Random.Range(10.0f, -10.0f));
+        pos = new Vector3(Random.Range(10.0f, -10.0f), Random.Range(1.5f, 10.0f), Random.Range(10.0f, -10.0f));
         fish = Instantiate(spawnfish) as GameObject;
         fish.transform.position = pos;
         fish.transform.parent = gameObject.transform;
         fishgold.Add(fish);
-    }</p>
+    }
 
-<p>}</p>
+}</code></pre>
 
-<p>Function: Update
-Parameters: n/a
-Description: update boids position to a new position every frame
-Return: n/a
-void Update()
+<p style="font-size:20px">#Function: Update<br/>
+#Parameters: n/a<br/>
+#Description: update boids position to a new position every frame<br/>
+#Return: n/a</p>
+<pre><code>void Update()
 {
     move_all_boids_to_new_position();
-}</p>
+}</code></pre>
 
-<p>Function: limited_velocity
-Parameters: GameObject myFish
-Description: limited boids velocity when their velocity go over a certain value that is giving 
-Return: n/a
-void limited_velocity(GameObject myFish) // they wont move too fast
+<p style="font-size:20px">#Function: limited_velocity<br/>
+#Parameters: GameObject myFish<br/>
+#Description: limited boids velocity when their velocity go over a certain value that is giving<br/>
+#Return: n/a</p>
+<pre><code>void limited_velocity(GameObject myFish) // they wont move too fast
 {
     if (myFish.GetComponent().velocity.magnitude &gt; limitedVelocity)
     {
-        myFish.GetComponent().velocity =                          myFish.GetComponent().velocity.normalized * 0.25f;
+        myFish.GetComponent().velocity = myFish.GetComponent().velocity.normalized * 0.25f;
     }
-}</p>
+}</code></pre>
 
-<p>Function: ExitButton
-Parameters: n/a
-Description: quit application 
-Return: n/a
-public void ExitButton()
+<p style="font-size:20px">#Function: ExitButton<br/>
+#Parameters: n/a<br/>
+#Description: quit application <br/>
+#Return: n/a</p>
+<pre><code>public void ExitButton()
 {
     Application.Quit();
-}</p>
+}</code></pre>
 
-<p>Function: move_all_boids_to_new_position
-Parameters: n/a
-Description: all the calculation are call within this function to update boids position
-Return: n/a
-void move_all_boids_to_new_position()
+<p style="font-size:20px">#Function: move_all_boids_to_new_position<br/>
+#Parameters: n/a<br/>
+#Description: all the calculation are call within this function to update boids position<br/>
+#Return: n/a</p>
+<pre><code> void move_all_boids_to_new_position()
 {
-    foreach(GameObject myFish in fishgold)
-    {
-        v1 = cohesion  (myFish) * cohension_inc.value * 0.1f;
-        v2 = seperation(myFish) * seperation_inc.value * 0.1f;
-        v3 = alignment (myFish) * alignment_inc.value * 0.1f;
-        v4 = bounding_box(myFish) * 0.01f;</p>
+	foreach(GameObject myFish in fishgold)
+	{
+		v1 = cohesion  (myFish) * cohension_inc.value * 0.1f;
+		v2 = seperation(myFish) * seperation_inc.value * 0.1f;
+		v3 = alignment (myFish) * alignment_inc.value * 0.1f;
+		v4 = bounding_box(myFish) * 0.01f;
 
-<pre><code>    myFish.GetComponent&lt;BoidStat&gt;().velocity = 
-    myFish.GetComponent&lt;BoidStat&gt;().velocity + v1 + v2 + v3 + v4;
-    myFish.GetComponent&lt;BoidStat&gt;().transform.up =                      myFish.GetComponent&lt;BoidStat&gt;().velocity.normalized;
-    limited_velocity(myFish);
-    myFish.transform.position += myFish.GetComponent&lt;BoidStat&gt;().velocity;
+		myFish.GetComponent&lt;BoidStat&gt;().velocity = 
+		myFish.GetComponent&lt;BoidStat&gt;().velocity + v1 + v2 + v3 + v4;
+		myFish.GetComponent&lt;BoidStat&gt;().transform.up = myFish.GetComponent&lt;BoidStat&gt;().velocity.normalized;
+		limited_velocity(myFish);
+		myFish.transform.position += myFish.GetComponent&lt;BoidStat&gt;().velocity;
+	}
 
- }
-</code></pre>
+}</code></pre>
 
-<p>}</p>
-
-<p>Function: bounding_box
-Parameters: GameObject currentFish
-Description: there are limited space where boids can go. This is to make the boids won't go too far away and just stay within a certain space that is giving
-Return: Vector3 force
-Vector3 bounding_box(GameObject currentFish)
+<p style="font-size:20px">#Function: bounding_box<br/>
+#Parameters: GameObject currentFish<br/>
+#Description: there are limited space where boids can go. This is to make the boids won't go too far away and just stay within a certain space that is giving<br/>
+#Return: Vector3 force</p>
+<pre><code>Vector3 bounding_box(GameObject currentFish)
 {
-    Vector3 fish_position = currentFish.transform.position;</p>
+	Vector3 fish_position = currentFish.transform.position;
 
-<pre><code>if (fish_position.x &lt; xmin)      { force.x = xmin - fish_position.x; }
-else if (fish_position.x &gt; xmax) { force.x = xmax - fish_position.x; }
+	if (fish_position.x &lt; xmin)      { force.x = xmin - fish_position.x; }
+	else if (fish_position.x &gt; xmax) { force.x = xmax - fish_position.x; }
 
-if (fish_position.y &lt; ymin)      { force.y = ymin - fish_position.y; }
-else if (fish_position.y &gt; ymax) { force.y = ymax - fish_position.y; }
+	if (fish_position.y &lt; ymin)      { force.y = ymin - fish_position.y; }
+	else if (fish_position.y &gt; ymax) { force.y = ymax - fish_position.y; }
 
-if (fish_position.z &lt; zmin)      { force.z = zmin - fish_position.z; }
-else if (fish_position.z &gt; zmax) { force.z = zmax - fish_position.z; }
+	if (fish_position.z &lt; zmin)      { force.z = zmin - fish_position.z; }
+	else if (fish_position.z &gt; zmax) { force.z = zmax - fish_position.z; }
 
-return force;
-</code></pre>
+	return force;
 
-<p>}</p>
+}</code></pre>
 
-<p>Function: cohesion
-Parameters: GameObject myFish
-Description: calculate boids center of mass which is their distance average
-Return: Vector3
-Vector3 cohesion(GameObject myFish) 
+<p style="font-size:20px">#Function: cohesion<br/>
+#Parameters: GameObject myFish<br/>
+#Description: calculate boids center of mass which is their distance average<br/>
+#Return: Vector3</p>
+<pre><code>Vector3 cohesion(GameObject myFish) 
 {
-    if (Bigfish &amp;&amp; boidsgui.Target.isOn == true)
-    {
-        return (Bigfish.transform.position - myFish.transform.position) / 100; 
-    }</p>
+	if (Bigfish &amp;&amp; boidsgui.Target.isOn == true)
+	{
+		return (Bigfish.transform.position - myFish.transform.position) / 100; 
+	}
 
-<pre><code>else foreach (GameObject f in fishgold)
+	else foreach (GameObject f in fishgold)
+	{
+		if (f != myFish)
+		{ pcj += f.transform.position; }
+	}
+
+	pcj = pcj / (fishgold.Count - 1);
+	return (pcj - myFish.transform.position) / 100;
+
+}</code></pre>
+
+<p style="font-size:20px">#Function: seperation<br/>
+#Parameters: GameObject myFish<br/>
+#Description: there are certain distance that each boid have for each other so they won't go on top of each other. This function calculate the distance that they need to be away from each other<br/>
+#Return: Vector3</p>
+<pre><code>Vector3 seperation(GameObject myFish) 
 {
-    if (f != myFish)
-    { pcj += f.transform.position; }
-}
+	Vector3 displacement = new Vector3(0,0,0);
 
-pcj = pcj / (fishgold.Count - 1);
-return (pcj - myFish.transform.position) / 100;
-</code></pre>
+	foreach (GameObject f in fishgold)
+	{
+		if (f != myFish)
+		{
+			if (Vector3.Distance(f.transform.position, myFish.transform.position) &lt; 6) 
+			{ displacement = displacement - (f.transform.position - myFish.transform.position); }
+		 }
+	}
 
-<p>}</p>
+	return displacement;
 
-<p>Function: seperation
-Parameters: GameObject myFish
-Description: there are certain distance that each boid have for each other so they won't go on top of each other. This function calculate the distance that they need to be away from each other
-Return: Vector3
-Vector3 seperation(GameObject myFish) 
+}</code></pre>
+
+<p style="font-size:20px">#Function: alignment<br/>
+#Parameters: GameObject myFish<br/>
+#Description: All the boids will try to match each other velocity. This function calculate boids average velocity<br/> 
+#Return: Vector3</p>
+<pre><code>Vector3 alignment(GameObject myFish)
 {
-    Vector3 displacement = new Vector3(0,0,0);</p>
+	foreach (GameObject f in fishgold)
+	{
+		if (f != myFish)
+		{ pvj += f.GetComponent().velocity; }
+	}
 
-<pre><code>foreach (GameObject f in fishgold)
-{
-    if (f != myFish)
-    {
-        if (Vector3.Distance(f.transform.position,                                      myFish.transform.position) &lt; 6) 
-        { displacement = displacement - (f.transform.position -                                     myFish.transform.position); }
-     }
- }
+	pvj = pvj / (fishgold.Count - 1);
+	return (pvj - myFish.GetComponent&lt;BoidStat&gt;().velocity) / 8;
 
- return displacement;
-</code></pre>
+}</code></pre>
 
-<p>}</p>
-
-<p>Function: alignment
-Parameters: GameObject myFish
-Description: All the boids will try to match each other velocity. This function calculate boids average velocity. 
-Return: Vector3
-Vector3 alignment(GameObject myFish)
-{
-    foreach (GameObject f in fishgold)
-    {
-        if (f != myFish)
-        { pvj += f.GetComponent().velocity; }
-    }</p>
-
-<pre><code>pvj = pvj / (fishgold.Count - 1);
-return (pvj - myFish.GetComponent&lt;BoidStat&gt;().velocity) / 8;
-</code></pre>
-
-<p>}</p>
-
-<p>File: BoidsGUI
-using UnityEngine;
-using System.Collections;
+<p style="font-size:20px"><b>File</b>: BoidsGUI<br/>
+using UnityEngine;<br/>
+using System.Collections;<br/>
 using UnityEngine.UI;</p>
 
-<p>Function: Start
-Parameters: n/a
-Description: Set all the GUI elements position base on the screen resolution, and active all the GUI elements that need to appear from the start
-Return: n/a
-void Start()
+<p style="font-size:20px">#Function: Start<br/>
+#Parameters: n/a<br/>
+#Description: Set all the GUI elements position base on the screen resolution, and active all the GUI elements that need to appear from the start<br/>
+#Return: n/a</p>
+<pre><code>void Start()
 {
-    Cohesion.GetComponent().position = 
-            new Vector3(Screen.width *0.5f, Screen.height * 0.1f, 0);
-    Alignment.GetComponent().position = 
-            new Vector3(Screen.width * 0.2f, Screen.height * 0.1f, 0);
-    Seperation.GetComponent().position = 
-            new Vector3(Screen.width * 0.8f, Screen.height * 0.1f, 0);
-    Exit.GetComponent().position = 
-            new Vector3(Screen.width * 0.8f, Screen.height * 0.95f, 0);
-    ResetSliders.GetComponent().position = 
-            new Vector3(Screen.width * 0.2f, Screen.height * 0.95f, 0);
-    Target.GetComponent().position = 
-            new Vector3(Screen.width *0.5f, Screen.height * 0.95f, 0);</p>
+	Cohesion.GetComponent().position = 
+			new Vector3(Screen.width *0.5f, Screen.height * 0.1f, 0);
+	Alignment.GetComponent().position = 
+			new Vector3(Screen.width * 0.2f, Screen.height * 0.1f, 0);
+	Seperation.GetComponent().position = 
+			new Vector3(Screen.width * 0.8f, Screen.height * 0.1f, 0);
+	Exit.GetComponent().position = 
+			new Vector3(Screen.width * 0.8f, Screen.height * 0.95f, 0);
+	ResetSliders.GetComponent().position = 
+			new Vector3(Screen.width * 0.2f, Screen.height * 0.95f, 0);
+	Target.GetComponent().position = 
+			new Vector3(Screen.width *0.5f, Screen.height * 0.95f, 0);
 
-<pre><code>cohesion = Cohension.value;
-alignment = Alignment.value;
-seperation = Seperation.value;
+	cohesion = Cohension.value;
+	alignment = Alignment.value;
+	seperation = Seperation.value;
 
-Cohesion.gameObject.SetActive(true);
-Alignment.gameObject.SetActive(true);
-Seperation.gameObject.SetActive(true);
-Exit.gameObject.SetActive(true);
-ResetSliders.gameObject.SetActive(true);
-</code></pre>
+	Cohesion.gameObject.SetActive(true);
+	Alignment.gameObject.SetActive(true);
+	Seperation.gameObject.SetActive(true);
+	Exit.gameObject.SetActive(true);
+	ResetSliders.gameObject.SetActive(true);
 
-<p>}</p>
+}</code></pre>
 
-<p>Function: ResetSlider
-Parameters: n/a
-Description: set all the sliders value back to their default value
-Return: n/a</p>
-
-<p>public void ResetSlider()
+<p style="font-size:20px">#Function: ResetSlider<br/>
+#Parameters: n/a<br/>
+#Description: set all the sliders value back to their default value<br/>
+#Return: n/a</p>
+<pre><code>public void ResetSlider()
 {
     Cohesion.value = cohesion;
     Alignment.value = alignment;
     Seperation.value = seperation;
-}</p>
+}</code></pre>
       </section>
 
     </div>
